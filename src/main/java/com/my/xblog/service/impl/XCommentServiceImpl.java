@@ -1,8 +1,8 @@
 package com.my.xblog.service.impl;
 
-import com.my.xblog.entity.XComment;
-import com.my.xblog.mapper.XCommentMapper;
-import com.my.xblog.service.XCommentService;
+import com.my.xblog.entity.Comment;
+import com.my.xblog.mapper.CommentMapper;
+import com.my.xblog.service.CommentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2020-12-19
  */
 @Service
-public class XCommentServiceImpl extends ServiceImpl<XCommentMapper, XComment> implements XCommentService {
+public class XCommentServiceImpl extends ServiceImpl<CommentMapper, Comment> implements CommentService {
 
 }

@@ -1,6 +1,6 @@
 package com.my.xblog.service;
 
-import com.my.xblog.entity.XComment;
+import com.my.xblog.entity.Reply;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author my
  * @since 2020-12-19
  */
-public interface XCommentService extends IService<XComment> {
+public interface ReplyService extends IService<Reply> {
 
 }

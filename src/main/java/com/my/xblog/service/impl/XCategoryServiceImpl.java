@@ -1,10 +1,12 @@
 package com.my.xblog.service.impl;
 
-import com.my.xblog.entity.XCategory;
-import com.my.xblog.mapper.XCategoryMapper;
-import com.my.xblog.service.XCategoryService;
+import com.my.xblog.entity.Category;
+import com.my.xblog.mapper.CategoryMapper;
+import com.my.xblog.service.CategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,6 +17,10 @@ import org.springframework.stereotype.Service;
  * @since 2020-12-19
  */
 @Service
-public class XCategoryServiceImpl extends ServiceImpl<XCategoryMapper, XCategory> implements XCategoryService {
+public class XCategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
 
+    @Override
+    public List<Category> listCategorys() {
+        return baseMapper.selectList(null);
+    }
 }

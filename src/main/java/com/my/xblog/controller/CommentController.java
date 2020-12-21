@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-12-19
  */
 @RestController
-@RequestMapping("/x-reply")
-public class XReplyController {
+@RequestMapping("/x-comment")
+public class CommentController {
 
 }
 

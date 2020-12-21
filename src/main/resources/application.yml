@@ -4,5 +4,15 @@ spring:
     url: jdbc:mysql://localhost:3306/xblog?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+#  devtools:
+#    restart:
+#      enabled: true  #设置开启热部署
+#      additional-paths: src/main/java #重启目录
 server:
   port: 8081
+mybatis:
+  type-aliases-package: com.my.xblog.entity
+  mapper-locations:
+    - classpath:mapper/*.xml
+  configuration:
+    mapUnderscoreToCamelCase: true

@@ -1,8 +1,8 @@
 package com.my.xblog.service.impl;
 
-import com.my.xblog.entity.XReply;
-import com.my.xblog.mapper.XReplyMapper;
-import com.my.xblog.service.XReplyService;
+import com.my.xblog.entity.Reply;
+import com.my.xblog.mapper.ReplyMapper;
+import com.my.xblog.service.ReplyService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2020-12-19
  */
 @Service
-public class XReplyServiceImpl extends ServiceImpl<XReplyMapper, XReply> implements XReplyService {
+public class XReplyServiceImpl extends ServiceImpl<ReplyMapper, Reply> implements ReplyService {
 
 }

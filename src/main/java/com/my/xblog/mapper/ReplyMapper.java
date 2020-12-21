@@ -1,6 +1,6 @@
 package com.my.xblog.mapper;
 
-import com.my.xblog.entity.XArticle;
+import com.my.xblog.entity.Reply;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author my
  * @since 2020-12-19
  */
-public interface XArticleMapper extends BaseMapper<XArticle> {
+public interface ReplyMapper extends BaseMapper<Reply> {
 
 }

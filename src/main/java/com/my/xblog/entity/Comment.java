@@ -20,7 +20,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="XComment对象", description="")
-public class XComment implements Serializable {
+public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
