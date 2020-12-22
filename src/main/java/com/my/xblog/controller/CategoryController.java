@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-12-19
  */
 @RestController
-@RequestMapping("/x-category")
+@RequestMapping("/category")
 public class CategoryController {
 
 }

@@ -27,20 +27,35 @@
 
     </resultMap>
 
-    <sql id="all">
-        a.id, a.title, a.summary, a.create_time, a.cover, a.content, a.type, a.views, a.likes, a.comments, a.commentable, a.recommended, a.published, u.id uid, u.username, u.avatar
+    <sql id="article">
+        a.id, a.title, a.summary, a.create_time, a.cover, a.content, a.type, a.views, a.likes, a.comments, a.commentable, a.recommended, a.published
     </sql>
+
+    <sql id="all">
+        <include refid="article"></include>
+        , u.id uid, u.username, u.avatar
+    </sql>
+
+
 
     <select id="listArticleByPageByTime" resultMap="articleMap"
             parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
-        select
+        SELECT
         <include refid="all"/>
         FROM article a
         LEFT JOIN sys_user u
         ON a.user_id = u.id
         ORDER BY a.create_time ASC;
     </select>
+    <select id="findArticleByID" resultType="com.my.xblog.entity.Article" resultMap="articleMap">
 
+    </select>
+    <select id="listArticleByUserId" resultType="com.my.xblog.entity.Article" resultMap="articleMap">
+        SELECT
+        <include refid="article"/>
+        FROM article a
+        WHERE user_id = #{uid}
+    </select>
 
 
 </mapper>

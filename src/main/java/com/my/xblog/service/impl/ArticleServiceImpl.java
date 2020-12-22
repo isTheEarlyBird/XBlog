@@ -20,7 +20,7 @@ import java.util.List;
  * @since 2020-12-19
  */
 @Service
-public class XArticleServiceImpl extends ServiceImpl<com.my.xblog.mapper.ArticleMapper, Article> implements ArticleService {
+public class ArticleServiceImpl extends ServiceImpl<com.my.xblog.mapper.ArticleMapper, Article> implements ArticleService {
 
     @Autowired
     private ArticleMapper articleMapper;
@@ -36,5 +36,15 @@ public class XArticleServiceImpl extends ServiceImpl<com.my.xblog.mapper.Article
         QueryWrapper<Article> wrapper = new QueryWrapper<>();
         wrapper.eq("recommended", 1);
         return baseMapper.selectList(wrapper);
+    }
+
+    @Override
+    public List<Article> listArticleByUserId(Long uid) {
+        return baseMapper.listArticleByUserId(uid);
+    }
+
+    @Override
+    public Article findArticleByID(Long id) {
+        return baseMapper.findArticleByID(id);
     }
 }

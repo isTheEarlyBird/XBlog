@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2020-12-19
  */
 @Service
-public class XReplyServiceImpl extends ServiceImpl<ReplyMapper, Reply> implements ReplyService {
+public class ReplyServiceImpl extends ServiceImpl<ReplyMapper, Reply> implements ReplyService {
 
 }

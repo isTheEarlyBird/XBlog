@@ -17,7 +17,7 @@ import java.util.List;
  * @since 2020-12-19
  */
 @Service
-public class XCategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
+public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
 
     @Override
     public List<Category> listCategorys() {

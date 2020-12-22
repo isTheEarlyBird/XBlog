@@ -73,9 +73,6 @@ public class Article implements Serializable {
     @ApiModelProperty(value = "用户id")
     private Long userId;
 
-    @ApiModelProperty(value = "分类id")
-    private Long categoryId;
-
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 

@@ -16,5 +16,24 @@ import java.util.List;
  */
 public interface ArticleMapper extends BaseMapper<Article> {
 
+    /**
+     * 分页获取文章按时间排序
+     * @param page
+     * @return
+     */
     public Page<Article> listArticleByPageByTime(Page<Article> page) ;
+
+    /**
+     * 根据id获取文章
+     * @param id
+     * @return
+     */
+    Article findArticleByID(Long id);
+
+    /**
+     * 根据用户id获取文章列表
+     * @param uid
+     * @return
+     */
+    List<Article> listArticleByUserId(Long uid);
 }

@@ -11,4 +11,8 @@
         WHERE ac.aid = #{articleId}
         AND c.id = ac.cid;
     </select>
+    <select id="categorys" resultType="com.my.xblog.entity.Category">
+        SELECT <include refid="all"></include>
+        FROM category c
+    </select>
 </mapper>
