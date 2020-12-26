@@ -56,6 +56,15 @@
         FROM article a
         WHERE user_id = #{uid}
     </select>
+    <select id="listArticleByCategoryIdPage" resultType="com.my.xblog.entity.Article" resultMap="articleMap">
+        SELECT
+        <include refid="all"/>
+        FROM article a, article_category ac, sys_user u
+        WHERE #{cid} = ac.cid
+        AND a.id = ac.aid
+        AND a.user_id = u.id
+        ORDER BY create_time DESC
+    </select>
 
 
 </mapper>

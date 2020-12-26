@@ -1,18 +1,15 @@
 package com.my.xblog.controller;
 
-import com.my.xblog.comment.Constant;
-import com.my.xblog.comment.MyResult;
+import com.my.xblog.common.MyResult;
 import com.my.xblog.service.ArticleService;
 import com.my.xblog.service.CategoryService;
-import com.my.xblog.vo.HomeVO;
+import com.my.xblog.vo.CommonVO;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.websocket.server.PathParam;
 
 /**
  * @author xuan
@@ -43,10 +40,10 @@ public class HomeController {
      **/
     @GetMapping("/{current}/{size}")
     public MyResult home(@PathVariable("current") Integer current, @PathVariable("size") Integer size) {
-        HomeVO homeVO = new HomeVO();
-        homeVO.setPageInfo(articleService.listArticleByPageByTime(current, size));
-        homeVO.setRecommendArticles(articleService.listRecommendArticles());
-        homeVO.setCategorys(categoryService.listCategorys());
-        return MyResult.success().data("homeVO", homeVO);
+        CommonVO commonVO = new CommonVO();
+        commonVO.setPageInfo(articleService.listArticleByPageByTime(current, size));
+        commonVO.setRecommendArticles(articleService.listRecommendArticles());
+        commonVO.setCategorys(categoryService.listCategorys(1, 7));
+        return MyResult.success().data("homeVO", commonVO);
     }
 }

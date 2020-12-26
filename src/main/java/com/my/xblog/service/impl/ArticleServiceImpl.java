@@ -44,6 +44,12 @@ public class ArticleServiceImpl extends ServiceImpl<com.my.xblog.mapper.ArticleM
     }
 
     @Override
+    public Page<Article> listArticleByCategoryIdPage(Long cid, Integer current, Integer size) {
+        Page<Article> page = new Page<>(current, size);
+        return articleMapper.listArticleByCategoryIdPage(cid, page);
+    }
+
+    @Override
     public Article findArticleByID(Long id) {
         return baseMapper.findArticleByID(id);
     }

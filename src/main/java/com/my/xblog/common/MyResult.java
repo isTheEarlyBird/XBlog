@@ -1,4 +1,4 @@
-package com.my.xblog.comment;
+package com.my.xblog.common;
 
 import lombok.Data;
 

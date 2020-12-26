@@ -1,7 +1,7 @@
 package com.my.xblog.controller;
 
 
-import com.my.xblog.comment.MyResult;
+import com.my.xblog.common.MyResult;
 import com.my.xblog.entity.Article;
 import com.my.xblog.service.ArticleService;
 import io.swagger.annotations.Api;
@@ -30,21 +30,16 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @GetMapping("/findListArticle")
-    public MyResult findListArticle(){
-        return MyResult.success();
-    }
-
     /*
-     * 根据id获取文章
+     * 根据用户id获取文章
      * @Author xuan
      * @Date 20:09 2020/12/22
-     * @Param id
+     * @Param uid
      * @return
      **/
-    @GetMapping("/findArticleByID/{id}")
-    public MyResult findArticleByID(@PathVariable Long id){
-        List<Article> articles = articleService.listArticleByUserId(id);
+    @GetMapping("/listArticleByUserId/{uid}")
+    public MyResult listArticleByUserId(@PathVariable Long uid){
+        List<Article> articles = articleService.listArticleByUserId(uid);
         return MyResult.success().data("articles", articles);
     }
 }

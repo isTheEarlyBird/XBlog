@@ -40,6 +40,17 @@ public interface ArticleService extends IService<Article> {
     public List<Article> listArticleByUserId(Long uid);
 
     /*
+     * 根据分类id获取文章
+     * @Author Administrator
+     * @Date 22:28 2020/12/23
+     * @Param cid  分类id
+     * @Param current  当前页
+     * @Param size  一页多少条
+     * @return
+     **/
+    public Page<Article> listArticleByCategoryIdPage(Long cid, Integer current, Integer size);
+
+    /*
      * 根据id获取文章
      * @Author Administrator
      * @Date 19:59 2020/12/22

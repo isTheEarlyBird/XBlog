@@ -36,4 +36,15 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * @return
      */
     List<Article> listArticleByUserId(Long uid);
+
+    /*
+     * 根据分类获取文章
+     * @Author Administrator
+     * @Date 20:34 2020/12/24
+     * @Param cid
+     * @Param current
+     * @Param size
+     * @return
+     **/
+    Page<Article> listArticleByCategoryIdPage(Long cid, Page<Article> page);
 }

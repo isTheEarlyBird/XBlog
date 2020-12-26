@@ -18,7 +18,7 @@ import java.util.List;
  **/
 @ApiModel("前台主页数据")
 @Data
-public class HomeVO {
+public class CommonVO {
 
     @ApiModelProperty("分类列表")
     private List<Category> categorys;
