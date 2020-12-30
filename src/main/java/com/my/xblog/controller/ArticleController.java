@@ -6,11 +6,7 @@ import com.my.xblog.entity.Article;
 import com.my.xblog.service.ArticleService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,6 +37,19 @@ public class ArticleController {
     public MyResult listArticleByUserId(@PathVariable Long uid){
         List<Article> articles = articleService.listArticleByUserId(uid);
         return MyResult.success().data("articles", articles);
+    }
+
+    /*
+     *
+     * @Author Administrator
+     * @Date 19:13 2020/12/28
+     * @Param article
+     * @return
+     **/
+    @PostMapping("/insert")
+    public MyResult insert(@RequestBody Article article){
+        articleService.insert(article);
+        return MyResult.success();
     }
 }
 

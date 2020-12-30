@@ -7,11 +7,7 @@ import com.my.xblog.service.ArticleService;
 import com.my.xblog.service.CategoryService;
 import com.my.xblog.vo.CommonVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,7 +29,28 @@ public class CategoryController {
     @Autowired
     ArticleService articleService;
 
-    @GetMapping("/{cid}/{size}/{current}") //实现点击分类
+    /*
+     * 推荐分类列表
+     * @Author Administrator
+     * @Date 19:50 2020/12/28
+     * @return 
+     **/
+    @GetMapping("/recommendCategory")
+    public MyResult allCategory() {
+        List<Category> recommendCategory = categoryService.listCategorys(1, 7);
+        return MyResult.success().data("recommendCategory", recommendCategory);
+    }
+
+    /*
+     * 分类页
+     * @Author Administrator
+     * @Date 19:55 2020/12/28
+     * @Param cid      分类id
+     * @Param current  当前页
+     * @Param size     每页多少条数据
+     * @return
+     **/
+    @GetMapping("/{cid}/{size}/{current}")
     public MyResult categorys(@PathVariable String cid, @PathVariable Integer current, @PathVariable Integer size) {
         List<Category> allCategory = categoryService.listCategorys();
 
@@ -44,5 +61,6 @@ public class CategoryController {
 
         return MyResult.success().data("allCategory", allCategory).data("commonVO", commonVO);
     }
+
 }
 

@@ -33,4 +33,13 @@ public interface CategoryService extends IService<Category> {
      * @return java.util.List<com.my.xblog.entity.Category>
      **/
     public List<Category> listCategorys(Integer start, Integer end);
+
+    /*
+     * 添加分类
+     * @Author Administrator
+     * @Date 10:53 2020/12/27
+     * @Param category
+     * @return
+     **/
+    Long insert(Category category);
 }

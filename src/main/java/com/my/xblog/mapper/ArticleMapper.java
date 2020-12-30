@@ -3,6 +3,7 @@ package com.my.xblog.mapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.my.xblog.entity.Article;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.my.xblog.entity.Category;
 
 import java.util.List;
 
@@ -47,4 +48,11 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * @return
      **/
     Page<Article> listArticleByCategoryIdPage(Long cid, Page<Article> page);
+
+    /**
+     * Article与Category中间表
+     * @param aid
+     * @param cid
+     */
+    void insertArticleCategory(Long aid, Long cid);
 }

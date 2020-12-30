@@ -35,8 +35,9 @@
         <include refid="article"></include>
         , u.id uid, u.username, u.avatar
     </sql>
-
-
+    <insert id="insertArticleCategory">
+        insert into article_category (cid, aid) values(#{cid}, #{aid});
+    </insert>
 
     <select id="listArticleByPageByTime" resultMap="articleMap"
             parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
@@ -45,6 +46,7 @@
         FROM article a
         LEFT JOIN sys_user u
         ON a.user_id = u.id
+        WHERE a.published = 1
         ORDER BY a.create_time ASC;
     </select>
     <select id="findArticleByID" resultType="com.my.xblog.entity.Article" resultMap="articleMap">
@@ -63,6 +65,7 @@
         WHERE #{cid} = ac.cid
         AND a.id = ac.aid
         AND a.user_id = u.id
+        AND a.published = 1
         ORDER BY create_time DESC
     </select>
 

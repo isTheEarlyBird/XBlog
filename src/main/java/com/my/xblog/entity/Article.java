@@ -49,7 +49,7 @@ public class Article implements Serializable {
     @ApiModelProperty(value = "文章内容")
     private String content;
 
-    @ApiModelProperty(value = "类型[1:原创,2:转载]")
+    @ApiModelProperty(value = "类型[0:转载, 1:原创]")
     private Integer type;
 
     @ApiModelProperty(value = "浏览量")
@@ -62,13 +62,13 @@ public class Article implements Serializable {
     private Integer comments;
 
     @ApiModelProperty(value = "是否开启评论[0:不开启,1:开启]")
-    private Boolean commentable;
+    private Byte commentable;
 
     @ApiModelProperty(value = "是否推荐[0:不推荐,1:推荐]")
-    private Boolean recommended;
+    private Byte recommended;
 
     @ApiModelProperty(value = "是否发布[0:草搞,1:发布,2:禁用/回收站]")
-    private Boolean published;
+    private Byte published;
 
     @ApiModelProperty(value = "用户id")
     private Long userId;

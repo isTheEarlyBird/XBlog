@@ -3,6 +3,7 @@ package com.my.xblog.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.my.xblog.entity.Article;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.my.xblog.entity.Category;
 
 import java.util.List;
 
@@ -59,4 +60,12 @@ public interface ArticleService extends IService<Article> {
      **/
     public Article findArticleByID(Long id);
 
+    /*
+     * 添加文章
+     * @Author Administrator
+     * @Date 19:46 2020/12/28
+     * @Param article
+     * @return
+     **/
+    void insert(Article article);
 }
