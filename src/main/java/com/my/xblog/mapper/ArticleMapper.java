@@ -1,9 +1,8 @@
 package com.my.xblog.mapper;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.my.xblog.entity.Article;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.my.xblog.entity.Category;
 
 import java.util.List;
 
@@ -22,7 +21,7 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * @param page
      * @return
      */
-    public Page<Article> listArticleByPageByTime(Page<Article> page) ;
+    public IPage<Article> listArticleByPageByTime(IPage<Article> page) ;
 
     /**
      * 根据id获取文章
@@ -47,7 +46,7 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * @Param size
      * @return
      **/
-    Page<Article> listArticleByCategoryIdPage(Long cid, Page<Article> page);
+    IPage<Article> listArticleByCategoryIdPage(Long cid, IPage<Article> page);
 
     /**
      * Article与Category中间表

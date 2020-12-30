@@ -50,7 +50,7 @@ public class CategoryController {
      * @Param size     每页多少条数据
      * @return
      **/
-    @GetMapping("/{cid}/{size}/{current}")
+    @GetMapping("/categorys/{cid}/{current}/{size}")
     public MyResult categorys(@PathVariable String cid, @PathVariable Integer current, @PathVariable Integer size) {
         List<Category> allCategory = categoryService.listCategorys();
 

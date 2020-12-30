@@ -1,5 +1,6 @@
 package com.my.xblog.vo;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.my.xblog.entity.Article;
 import com.my.xblog.entity.Category;
@@ -27,5 +28,5 @@ public class CommonVO {
     private List<Article> recommendArticles;
 
     @ApiModelProperty("文章分页")
-    private Page<Article> pageInfo;
+    private IPage<Article> pageInfo;
 }

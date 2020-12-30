@@ -1,5 +1,6 @@
 package com.my.xblog.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.my.xblog.entity.Article;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -21,7 +22,7 @@ public interface ArticleService extends IService<Article> {
      * @param size  一页
      * @return
      */
-    public Page<Article> listArticleByPageByTime(Integer currentPage, Integer size);
+    public IPage<Article> listArticleByPageByTime(Integer currentPage, Integer size);
 
     /*
      * 获取推荐文章
@@ -49,7 +50,7 @@ public interface ArticleService extends IService<Article> {
      * @Param size  一页多少条
      * @return
      **/
-    public Page<Article> listArticleByCategoryIdPage(Long cid, Integer current, Integer size);
+    public IPage<Article> listArticleByCategoryIdPage(Long cid, Integer current, Integer size);
 
     /*
      * 根据id获取文章

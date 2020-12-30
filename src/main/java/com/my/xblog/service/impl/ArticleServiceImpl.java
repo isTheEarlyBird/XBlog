@@ -1,6 +1,7 @@
 package com.my.xblog.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.my.xblog.entity.Article;
 import com.my.xblog.entity.Category;
@@ -32,8 +33,8 @@ public class ArticleServiceImpl extends ServiceImpl<com.my.xblog.mapper.ArticleM
     private CategoryService categoryService;
 
     @Override
-    public Page<Article> listArticleByPageByTime(Integer current, Integer size) {
-        Page<Article> page = new Page<>(current, size);
+    public IPage<Article> listArticleByPageByTime(Integer current, Integer size) {
+        IPage<Article> page = new Page<>(current, size);
         return articleMapper.listArticleByPageByTime(page);
     }
 
@@ -51,8 +52,8 @@ public class ArticleServiceImpl extends ServiceImpl<com.my.xblog.mapper.ArticleM
     }
 
     @Override
-    public Page<Article> listArticleByCategoryIdPage(Long cid, Integer current, Integer size) {
-        Page<Article> page = new Page<>(current, size);
+    public IPage<Article> listArticleByCategoryIdPage(Long cid, Integer current, Integer size) {
+        IPage<Article> page = new Page<>(current, size);
         return articleMapper.listArticleByCategoryIdPage(cid, page);
     }
 

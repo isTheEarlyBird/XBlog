@@ -40,14 +40,14 @@
     </insert>
 
     <select id="listArticleByPageByTime" resultMap="articleMap"
-            parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
+            parameterType="com.baomidou.mybatisplus.core.metadata.IPage">
         SELECT
         <include refid="all"/>
         FROM article a
         LEFT JOIN sys_user u
         ON a.user_id = u.id
         WHERE a.published = 1
-        ORDER BY a.create_time ASC;
+        ORDER BY a.create_time DESC
     </select>
     <select id="findArticleByID" resultType="com.my.xblog.entity.Article" resultMap="articleMap">
 
