@@ -7,6 +7,7 @@
         <result property="title" column="title"/>
         <result property="summary" column="summary"/>
         <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
         <result property="cover" column="cover"/>
         <result property="content" column="content"/>
         <result property="type" column="type"/>
@@ -28,7 +29,7 @@
     </resultMap>
 
     <sql id="article">
-        a.id, a.title, a.summary, a.create_time, a.cover, a.content, a.type, a.views, a.likes, a.comments, a.commentable, a.recommended, a.published
+        a.id, a.title, a.summary, a.create_time, a.update_time, a.cover, a.content, a.type, a.views, a.likes, a.comments, a.commentable, a.recommended, a.published
     </sql>
 
     <sql id="all">
@@ -49,16 +50,15 @@
         WHERE a.published = 1
         ORDER BY a.create_time DESC
     </select>
-    <select id="findArticleByID" resultType="com.my.xblog.entity.Article" resultMap="articleMap">
 
-    </select>
-    <select id="listArticleByUserId" resultType="com.my.xblog.entity.Article" resultMap="articleMap">
+
+    <select id="listArticleByUserId" resultMap="articleMap">
         SELECT
         <include refid="article"/>
         FROM article a
         WHERE user_id = #{uid}
     </select>
-    <select id="listArticleByCategoryIdPage" resultType="com.my.xblog.entity.Article" resultMap="articleMap">
+    <select id="listArticleByCategoryIdPage" resultMap="articleMap">
         SELECT
         <include refid="all"/>
         FROM article a, article_category ac, sys_user u
@@ -67,6 +67,14 @@
         AND a.user_id = u.id
         AND a.published = 1
         ORDER BY create_time DESC
+    </select>
+    <select id="findArticleById" resultMap="articleMap">
+        SELECT
+        <include refid="all"/>
+        FROM article a
+        LEFT JOIN sys_user u
+        ON a.user_id = u.id
+        WHERE a.id = #{id}
     </select>
 
 

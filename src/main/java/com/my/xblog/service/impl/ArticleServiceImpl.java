@@ -58,8 +58,8 @@ public class ArticleServiceImpl extends ServiceImpl<com.my.xblog.mapper.ArticleM
     }
 
     @Override
-    public Article findArticleByID(Long id) {
-        return baseMapper.findArticleByID(id);
+    public Article findArticleById(Long id) {
+        return articleMapper.findArticleById(id);
     }
 
     @Override

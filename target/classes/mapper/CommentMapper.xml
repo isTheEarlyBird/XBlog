@@ -2,4 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.my.xblog.mapper.CommentMapper">
 
+    <resultMap id="comment" type="com.my.xblog.entity.Comment">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="likes" property="likes"/>
+        <result column="article_id" property="articleId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="user_id" property="userId"/>
+        <association property="sysUser" javaType="com.my.xblog.entity.SysUser">
+            <id property="id" column="uid"/>
+            <result property="username" column="username"/>
+            <result property="avatar" column="avatar"/>
+        </association>
+    </resultMap>
+
+    <sql id="comment">
+        c.id, c.content, c.likes, c.article_id, c.create_time, c.update_time, c.user_id, u.username, u.avatar
+    </sql>
+
+    <sql id="all">
+        <include refid="comment"></include>
+        , u.id uid, u.username, u.avatar
+    </sql>
+
+    <sql id="user">
+        LEFT JOIN sys_user u
+        ON c.user_id = u.id
+    </sql>
+
+    <select id="listByArticleIdAsc" resultMap="comment">
+        SELECT
+        <include refid="all"></include>
+        FROM comment c
+        <include refid="user"></include>
+        WHERE c.article_id = #{articleId}
+        AND c.status = 1
+        ORDER BY c.create_time ASC
+    </select>
 </mapper>

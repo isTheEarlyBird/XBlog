@@ -23,12 +23,6 @@ public interface ArticleMapper extends BaseMapper<Article> {
      */
     public IPage<Article> listArticleByPageByTime(IPage<Article> page) ;
 
-    /**
-     * 根据id获取文章
-     * @param id
-     * @return
-     */
-    Article findArticleByID(Long id);
 
     /**
      * 根据用户id获取文章列表
@@ -54,4 +48,13 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * @param cid
      */
     void insertArticleCategory(Long aid, Long cid);
+
+    /*
+     * 根据id获取文章
+     * @Author Administrator
+     * @Date 19:41 2020/12/31
+     * @Param id
+     * @return
+     **/
+    Article findArticleById(Long id);
 }

@@ -59,7 +59,8 @@ public interface ArticleService extends IService<Article> {
      * @Param id
      * @return
      **/
-    public Article findArticleByID(Long id);
+    public Article findArticleById(Long id);
+
 
     /*
      * 添加文章

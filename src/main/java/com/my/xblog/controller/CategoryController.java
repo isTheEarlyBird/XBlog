@@ -6,6 +6,7 @@ import com.my.xblog.entity.Category;
 import com.my.xblog.service.ArticleService;
 import com.my.xblog.service.CategoryService;
 import com.my.xblog.vo.CommonVO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/category")
+@Api(tags = "分类")
 public class CategoryController {
 
     @Autowired
@@ -36,7 +38,7 @@ public class CategoryController {
      * @return 
      **/
     @GetMapping("/recommendCategory")
-    public MyResult allCategory() {
+    public MyResult recommendCategory() {
         List<Category> recommendCategory = categoryService.listCategorys(1, 7);
         return MyResult.success().data("recommendCategory", recommendCategory);
     }

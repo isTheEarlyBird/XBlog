@@ -3,7 +3,9 @@ package com.my.xblog.controller;
 
 import com.my.xblog.common.MyResult;
 import com.my.xblog.entity.Article;
+import com.my.xblog.entity.Comment;
 import com.my.xblog.service.ArticleService;
+import com.my.xblog.service.CommentService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,9 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private CommentService commentService;
 
     /*
      * 根据用户id获取文章
@@ -50,6 +55,20 @@ public class ArticleController {
     public MyResult insert(@RequestBody Article article){
         articleService.insert(article);
         return MyResult.success();
+    }
+
+    /*
+     * 根据id获取文章
+     * @Author xuan
+     * @Date 20:09 2020/12/22
+     * @Param uid
+     * @return
+     **/
+    @GetMapping("/findArticleById/{id}")
+    public MyResult findArticleById(@PathVariable Long id){
+        Article article = articleService.findArticleById(id);
+        List<Comment> commentList = commentService.listComment(id);
+        return MyResult.success().data("article", article).data("commentList", commentList);
     }
 }
 

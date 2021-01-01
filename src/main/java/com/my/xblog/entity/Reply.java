@@ -2,8 +2,12 @@ package com.my.xblog.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.my.xblog.util.DateFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -20,40 +24,37 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="XReply对象", description="")
-public class Reply implements Serializable {
+public class Reply extends Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
-      @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
-
-    @ApiModelProperty(value = "点赞数")
-    private Integer likes;
-
-    @ApiModelProperty(value = "评论内容")
-    private String comment;
-
-    @ApiModelProperty(value = "启用状态[0:禁用,1:启用]")
-    private Integer status;
-
-    @ApiModelProperty(value = "被回复人id")
-    private Long userId;
-
-    @ApiModelProperty(value = "被回复的评论id")
+    @ApiModelProperty(value = "被回复评论id")
     private Long commentId;
 
-    @ApiModelProperty(value = "文章id")
-    private Long articleId;
-
     @ApiModelProperty(value = "回复人id")
-    private Long replyUserId;
+    private Long replyId;
 
-    @ApiModelProperty(value = "创建时间")
-    private Date createTime;
+    @ApiModelProperty(value = "被回复用户")
+    private SysUser replyUser;
 
-    @ApiModelProperty(value = "更新时间")
-    private Date updateTime;
-
-
+    @Override
+    public String toString() {
+        return "Reply{" +
+                "id=" + this.getId() +
+                ", content='" + this.getContent() + '\'' +
+                ", likes=" + this.getLikes() +
+                ", status=" + this.getStatus() +
+                ", userId=" + this.getUserId() +
+                ", articleId=" + this.getArticleId() +
+                ", createTime=" + this.getCreateTime() +
+                ", updateTime=" + this.getUpdateTime() +
+                ", children=" + this.getChildren() +
+                ", sysUser=" + this.getSysUser() +
+                ", createTimeVO='" + this.getCreateTimeVO() + '\'' +
+                ", updateTimeVO='" + this.getUpdateTimeVO() + '\'' +
+                "commentId=" + commentId +
+                ", replyId=" + replyId +
+                ", replyUser=" + replyUser +
+                '}';
+    }
 }
