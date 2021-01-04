@@ -55,7 +55,6 @@ public class CommentController {
     @PostMapping("/postReply")
     public MyResult postReply(@RequestBody Reply reply) throws JsonProcessingException {
 
-        System.out.println(reply);
         List<Comment> commentList = commentService.postReply(reply);
         return MyResult.success().data("commentList", commentList);
     }
@@ -70,7 +69,6 @@ public class CommentController {
     @GetMapping("/listComment/{articleId}")
     public MyResult listComment(@PathVariable Long articleId){
         List<Comment> commentList = commentService.listComment(articleId);
-        System.out.println(commentList);
         return MyResult.success().data("commentList", commentList);
     }
 }

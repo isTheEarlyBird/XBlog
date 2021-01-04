@@ -9,8 +9,11 @@ import com.my.xblog.mapper.ArticleMapper;
 import com.my.xblog.service.ArticleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.my.xblog.service.CategoryService;
+import com.my.xblog.util.RedisKeyUtils;
+import com.my.xblog.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -63,6 +66,14 @@ public class ArticleServiceImpl extends ServiceImpl<com.my.xblog.mapper.ArticleM
     }
 
     @Override
+    @Transactional
+    public Article watch(Long id) {
+        articleMapper.increaseViews(id);
+        return articleMapper.findArticleById(id);
+    }
+
+    @Override
+    @Transactional
     public void insert(Article article) {
         article.setCreateTime(new Date());
         article.setUpdateTime(new Date());
@@ -78,4 +89,18 @@ public class ArticleServiceImpl extends ServiceImpl<com.my.xblog.mapper.ArticleM
 
     }
 
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void increaseLikes(Long aid) {
+
+        articleMapper.increaseLikes(aid);
+    }
+
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void decreaseLikes(Long aid) {
+
+        articleMapper.decreaseLikes(aid);
+    }
 }

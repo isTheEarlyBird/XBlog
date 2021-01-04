@@ -61,6 +61,14 @@ public interface ArticleService extends IService<Article> {
      **/
     public Article findArticleById(Long id);
 
+    /*
+     * 查看文章
+     * @Author Administrator
+     * @Date 19:59 2020/12/22
+     * @Param id
+     * @return
+     **/
+    public Article watch(Long id);
 
     /*
      * 添加文章
@@ -70,4 +78,22 @@ public interface ArticleService extends IService<Article> {
      * @return
      **/
     void insert(Article article);
+
+    /*
+     * 增加文章点赞数
+     * @Author Administrator
+     * @Date 21:28 2021/1/2
+     * @Param aid
+     * @return 
+     **/
+    void increaseLikes(Long aid);
+
+    /*
+     * 减少文章点赞数
+     * @Author Administrator
+     * @Date 20:27 2021/1/3
+     * @Param aid
+     * @return
+     **/
+    void decreaseLikes(Long aid);
 }

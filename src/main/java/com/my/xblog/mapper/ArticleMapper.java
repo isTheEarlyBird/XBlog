@@ -57,4 +57,31 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * @return
      **/
     Article findArticleById(Long id);
+
+    /*
+     * 增加文章点赞数
+     * @Author Administrator
+     * @Date 20:24 2021/1/3
+     * @Param aid
+     * @return
+     **/
+    void increaseLikes(Long aid);
+
+    /*
+     * 减少文章点赞数
+     * @Author Administrator
+     * @Date 20:24 2021/1/3
+     * @Param aid
+     * @return
+     **/
+    void decreaseLikes(Long aid);
+
+    /*
+     * 增加文章观看数
+     * @Author Administrator
+     * @Date 20:24 2021/1/3
+     * @Param aid
+     * @return
+     **/
+    void increaseViews(Long id);
 }

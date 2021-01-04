@@ -39,6 +39,15 @@
     <insert id="insertArticleCategory">
         insert into article_category (cid, aid) values(#{cid}, #{aid});
     </insert>
+    <update id="increaseLikes">
+        UPDATE article SET likes = likes + 1 where id = #{aid};
+    </update>
+    <update id="decreaseLikes">
+        UPDATE article SET likes = likes - 1 where id = #{aid};
+    </update>
+    <update id="increaseViews">
+        UPDATE article SET views = views + 1 where id = #{aid};
+    </update>
 
     <select id="listArticleByPageByTime" resultMap="articleMap"
             parameterType="com.baomidou.mybatisplus.core.metadata.IPage">

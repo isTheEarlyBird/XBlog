@@ -30,6 +30,9 @@
         LEFT JOIN sys_user u
         ON c.user_id = u.id
     </sql>
+    <update id="increaseComments">
+        UPDATE article SET comments = comments + 1 where id = #{aid};
+    </update>
 
     <select id="listByArticleIdAsc" resultMap="comment">
         SELECT

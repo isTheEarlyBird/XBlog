@@ -7,6 +7,7 @@ import com.my.xblog.entity.Comment;
 import com.my.xblog.service.ArticleService;
 import com.my.xblog.service.CommentService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,11 +65,43 @@ public class ArticleController {
      * @Param uid
      * @return
      **/
-    @GetMapping("/findArticleById/{id}")
-    public MyResult findArticleById(@PathVariable Long id){
-        Article article = articleService.findArticleById(id);
+    @GetMapping("/watch/{id}")
+    public MyResult watch(@PathVariable Long id){
+        Article article = articleService.watch(id);
         List<Comment> commentList = commentService.listComment(id);
         return MyResult.success().data("article", article).data("commentList", commentList);
+    }
+
+    /*
+     * 增加文章点赞
+     * @Author Administrator
+     * @Date 21:28 2021/1/2
+     * @Param aid
+     * @return
+     **/
+    @ApiOperation("点赞文章")
+    @PutMapping("/increaseLikes/{aid}")
+    @CrossOrigin
+    public MyResult increaseLikes(@PathVariable("aid") Long aid){
+
+        articleService.increaseLikes(aid);
+        return MyResult.success();
+    }
+
+    /*
+     * 减少文章点赞
+     * @Author Administrator
+     * @Date 21:28 2021/1/2
+     * @Param aid
+     * @return
+     **/
+    @ApiOperation("点赞文章")
+    @PutMapping("/decreaseLikes/{aid}")
+    @CrossOrigin
+    public MyResult decreaseLikes(@PathVariable("aid") Long aid){
+
+        articleService.decreaseLikes(aid);
+        return MyResult.success();
     }
 }
 

@@ -23,4 +23,13 @@ public interface CommentMapper extends BaseMapper<Comment> {
      * @return
      **/
     List<Comment> listByArticleIdAsc(Long articleId);
+
+    /*
+     * 增加评论数
+     * @Author Administrator
+     * @Date 21:35 2021/1/3
+     * @Param aid
+     * @return
+     **/
+    void increaseComments(Long aid);
 }
